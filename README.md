@@ -44,5 +44,9 @@ Incluye un diagrama de red que muestra interconexiones entre routers y AS.
 ## 👨‍💻 Autor / Author
 
 Creado por santsavila
-📁 Este repositorio es público solo para consulta y aprendizaje. No se aceptan modificaciones externas.
+
+---
+
+🔒 Este repositorio es público solo para consulta y aprendizaje. No se aceptan modificaciones externas.  
+(This repository is public for educational purposes only. External modifications are not accepted.)
 
