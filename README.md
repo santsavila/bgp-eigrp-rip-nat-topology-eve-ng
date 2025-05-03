@@ -39,6 +39,7 @@ show ip route
 
 Incluye un diagrama de red que muestra interconexiones entre routers y AS.  
 (Contains a network diagram showing the interconnection between routers and ASes.)
+![Topología de red](diagramas/topologia.png)
 
 ## 👨‍💻 Autor / Author
 
