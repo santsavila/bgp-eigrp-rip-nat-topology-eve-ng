@@ -87,3 +87,7 @@ Creado por santsavila
 
 🔒 Este repositorio es público solo para fines educativos. No se aceptan modificaciones externas.  
 *(This repository is public for educational purposes only. External modifications are not accepted.)*
+
+## 🗨️ Comentarios y sugerencias
+
+Puedes dejar sugerencias o preguntas abriendo un [Issue](https://github.com/santsavila/topologia-bgp-eigrp-rip-nat/issues).
