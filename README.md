@@ -1,52 +1,89 @@
+# Red Simulada en EVE-NG con Múltiples AS y Salida a Internet  
+*(Simulated Network in EVE-NG with Multiple AS and Internet Access)*
 
-# Topología BGP con RIP, EIGRP y NAT (BGP Topology with RIP, EIGRP and NAT)
+Este proyecto presenta una topología de red compleja simulada en EVE-NG, integrando múltiples sistemas autónomos (AS) con protocolos IGP distintos (OSPF, RIP, EIGRP) y conectados mediante BGP. Se configura salida a Internet con NAT desde routers internos.
 
-Red simulada en EVE-NG con múltiples AS (AS200, AS250 y AS300), cada uno con protocolos IGP diferentes (OSPF, RIP, EIGRP) e interconectados mediante BGP. Se implementa NAT para brindar salida a Internet desde routers internos.
+*(This project showcases a complex simulated network in EVE-NG, integrating multiple Autonomous Systems (AS) with different IGPs—OSPF, RIP, and EIGRP—interconnected via BGP. Internet access is provided to internal routers using NAT.)*
 
-(Simulated network in EVE-NG with multiple ASes (AS200, AS250, AS300), each using different IGP protocols (OSPF, RIP, EIGRP) and interconnected via BGP. NAT is used to provide Internet access to internal routers.)
+---
 
-## 📌 Tecnologías utilizadas / Technologies Used
+## 📷 Captura de la Topología / Network Diagram
 
-- Cisco IOS (EVE-NG)
-- BGP, RIP v2, OSPF, EIGRP
-- NAT con sobrecarga (PAT) / NAT with Overload
-- Redes de loopback y rutas estáticas / Loopback networks and static routes
-- DNS, DHCP
+![Topología de red](diagramas/topologia.png)
 
-## 🖥️ Estructura del proyecto / Project Structure
+---
 
-- `routers/` → Archivos `.cfg` de cada router (router configuration files)
-- `diagramas/` → Imagen de la topología (network diagram image)
-- `README.md` → Documentación del proyecto (project documentation)
+## 🧩 Componentes de la Red / Network Components
 
-## 🧪 Pruebas recomendadas / Recommended Tests
+- **AS100** – Router Intermedio (BGP)
+- **AS200** – R1, R2, R3 (OSPF + BGP)
+- **AS250** – R4, R5, R6 (RIP + BGP)
+- **AS300** – R7, R8, R9 (EIGRP + BGP)
+- **NAT + DHCP** – Configurado en el Router Intermedio para salida a Internet
 
-Desde R8 o R9 / From R8 or R9:
+---
 
-```
+## 📁 Archivos de Configuración / Configuration Files
+
+Los archivos `.cfg` de configuración están organizados en la carpeta `routers/`:
+
+- `R_INTERMEDIO.cfg`: Router central con BGP y NAT
+- `AS200.cfg`: Routers R1-R3 con OSPF + BGP
+- `AS250.cfg`: Routers R4-R6 con RIP + BGP
+- `AS300.cfg`: Routers R7-R9 con EIGRP + BGP
+- `NAT_Config.cfg`: Configuración NAT y acceso a Internet
+
+---
+
+## 🧪 Pruebas Recomendadas / Recommended Tests
+
+Desde R8 o R9:
+
+```bash
 ping 8.8.8.8
 ping www.google.com
 ```
 
-Desde cualquier AS / From any AS:
+Desde cualquier AS:
 
-```
+```bash
 show ip bgp
 show ip route
 ```
 
-## 📷 Captura de la topología / Network Diagram
+---
 
-Incluye un diagrama de red que muestra interconexiones entre routers y AS.  
-(Contains a network diagram showing the interconnection between routers and ASes.)
-![Topología de red](diagramas/topologia.png)
+## 🛠️ Notas Técnicas / Technical Notes
 
-## 👨‍💻 Autor / Author
-
-Creado por santsavila
+- Se corrigieron advertencias de `duplex mismatch` en interfaces FastEthernet con `duplex full` y `speed 100`.
+- Redistribución implementada entre BGP ↔ OSPF, BGP ↔ RIP, y BGP ↔ EIGRP.
+- Verificada conectividad entre todos los AS y salida a Internet desde hosts internos.
+- Proyecto probado en entorno EVE-NG.
 
 ---
 
-🔒 Este repositorio es público solo para consulta y aprendizaje. No se aceptan modificaciones externas.  
-(This repository is public for educational purposes only. External modifications are not accepted.)
+## 📂 Estructura del Repositorio / Repository Structure
 
+```
+/
+├── README.md
+├── diagramas/
+│   └── topologia.png
+├── routers/
+│   ├── R_INTERMEDIO.cfg
+│   ├── AS200.cfg
+│   ├── AS250.cfg
+│   ├── AS300.cfg
+│   └── NAT_Config.cfg
+```
+
+---
+
+## 👨‍💻 Autor / Author
+
+Creado por santsavila  
+
+---
+
+🔒 Este repositorio es público solo para fines educativos. No se aceptan modificaciones externas.  
+*(This repository is public for educational purposes only. External modifications are not accepted.)*
