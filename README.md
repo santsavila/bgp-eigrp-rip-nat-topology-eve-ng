@@ -91,3 +91,5 @@ Creado por santsavila
 ## 🗨️ Comentarios y sugerencias
 
 Puedes dejar sugerencias o preguntas abriendo un [Issue](https://github.com/santsavila/topologia-bgp-eigrp-rip-nat/issues).
+
+⭐ Si este proyecto te ha sido útil o interesante, ¡considera darle una estrella (Star) arriba!  
